@@ -9,7 +9,7 @@
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"outDir": "./dist",
-		"types": ["reflect-metadata","jest"],
+		"types": ["reflect-metadata"],
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
