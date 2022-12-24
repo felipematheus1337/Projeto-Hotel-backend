@@ -3,6 +3,7 @@ import 'reflect-metadata';
 import cors from "cors";
 import dotenv from 'dotenv';
 import { AppDataSource } from "./data-source";
+import greetingRouter from "./routes/greetingRouter";
 dotenv.config();
 
 class App {
@@ -23,7 +24,7 @@ class App {
     }
 
     routes() {
-        //this.app.use("/hello", greetingRouter);
+        this.app.use("/hello", greetingRouter);
     }
 
     dbConnection(): void {
