@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from 'dotenv';
 import { AppDataSource } from "./data-source";
 import greetingRouter from "./routes/greetingRouter";
+import hotelRouter from "./routes/hotelRouter";
 dotenv.config();
 
 class App {
@@ -12,6 +13,7 @@ class App {
 
     constructor() {
         this.app = express();
+        this.middlewares();
         this.routes();
         this.dbConnection();
     }
@@ -25,6 +27,7 @@ class App {
 
     routes() {
         this.app.use("/hello", greetingRouter);
+        this.app.use("/", hotelRouter);
     }
 
     dbConnection(): void {

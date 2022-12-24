@@ -1,12 +1,13 @@
 import { ICreateHotel } from "../domain/model/ICreateHotel";
 import { IUpdateHotel } from "../domain/model/IUpdateHotel";
+import { IHotelService } from "../domain/services/IHotelService";
 import { Hotel } from "../entities/Hotel";
 import AppError from "../errors/AppError";
 import { HotelRepository } from "../repositories/HotelRepository";
 
 
 
-class HotelService {
+class HotelService  implements IHotelService{
 
     public async list():Promise<Hotel[]> {
         const hoteis = await HotelRepository.find({});
@@ -16,8 +17,8 @@ class HotelService {
 
     public async create({nome,cnpj,cidade,pais,estado} : ICreateHotel): Promise<Hotel> {
         const hotel = HotelRepository.create({
-            nome,
-            cnpj,
+            nome:Number(nome),
+            cnpj:Number(cnpj),
             cidade,
             pais,
             estado
@@ -36,9 +37,9 @@ class HotelService {
             throw new AppError(`Hotel não encontrado com o ID: ${id}`, 404);
         }
 
-        await HotelRepository.update({ id }, {
-            nome,
-            cnpj,
+        await HotelRepository.update({ id:Number(id) }, {
+            nome:Number(nome),
+            cnpj:Number(cnpj),
             cidade,
             pais,
             estado
