@@ -37,13 +37,13 @@ class HotelService  implements IHotelService{
             throw new AppError(`Hotel não encontrado com o ID: ${id}`, 404);
         }
 
-        await HotelRepository.update({ id:Number(id) }, {
-            nome:Number(nome),
-            cnpj:Number(cnpj),
-            cidade,
-            pais,
-            estado
-        });
+        hotelExists.nome = nome;
+        hotelExists.cnpj = cnpj;
+        hotelExists.cidade = cidade;
+        hotelExists.pais = pais;
+        hotelExists.estado = estado;
+
+        await HotelRepository.save(hotelExists);
 
     }
 

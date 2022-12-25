@@ -18,7 +18,6 @@ export default class HotelController {
     }
 
     public async cadastrarHotel(request: Request, response: Response): Promise<Response> {
-        console.log(request.body);
         const { nome, cnpj, pais, estado, cidade } = request.body;
 
         const hotel = await HotelService.create({ nome, cnpj, pais, estado, cidade })

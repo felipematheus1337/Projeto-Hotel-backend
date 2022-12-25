@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import { AppDataSource } from "./data-source";
 import greetingRouter from "./routes/greetingRouter";
 import hotelRouter from "./routes/hotelRouter";
+import hospedeRouter from "./routes/hospedeRouter";
+import reservaHospedeRouter from "./routes/reservaHospedeRouter";
 dotenv.config();
 
 class App {
@@ -28,6 +30,8 @@ class App {
     routes() {
         this.app.use("/hello", greetingRouter);
         this.app.use("/", hotelRouter);
+        this.app.use("/", hospedeRouter);
+        this.app.use("/", reservaHospedeRouter);
     }
 
     dbConnection(): void {

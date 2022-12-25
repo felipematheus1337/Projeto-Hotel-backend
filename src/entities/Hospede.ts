@@ -17,7 +17,6 @@ export class Hospede implements IHospede {
     sobrenome: string;
 
 
-
     @ManyToOne(() => Reserva, reserva => reserva.hospedes)
     @JoinColumn({name: 'idhospede'})    
     reserva: Reserva;
